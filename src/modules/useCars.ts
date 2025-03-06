@@ -89,7 +89,6 @@ export const useCars = () => {
     }
   };
 
-  /*
   const updateCar = async (id: string, updatedCar: Partial<Car>): Promise<void> => {
     try {
       const { token } = getTokenAndUserId();
@@ -105,7 +104,7 @@ export const useCars = () => {
   
       if (!response.ok) {
         const errorResponse = await response.json();
-        console.error("Error updating car:", errorResponse); // Log error
+        console.error("Error updating car:", errorResponse);
         throw new Error(errorResponse.error || "Failed to update car");
       }
   
@@ -114,12 +113,11 @@ export const useCars = () => {
       // Fetch again to refresh the list
       await fetchCars();
     } catch (err) {
-      console.error("Failed to update car:", err); // Log error
+      console.error("Failed to update car:", err);
       error.value = (err as Error).message;
     }
   };
 
-  */
 
   const deleteCarFromServer = async (
     id: string,
@@ -162,7 +160,7 @@ export const useCars = () => {
     cars,
     fetchCars,
     addCar,
-    //updateCar,
+    updateCar,
     deleteCar,
     getTokenAndUserId,
   };

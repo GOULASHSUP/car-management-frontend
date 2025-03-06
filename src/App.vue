@@ -1,35 +1,27 @@
 <template>
   <div>
-    <!-- Navbar -->
-    <nav class="bg-orange-700 text-zinc-100">
-      <div class="sm:px-64 px-4 py-4 flex justify-between items-center">
-        <!-- Logo or Brand (Optional) -->
-        <div class="text-zinc-100 text-xl font-bold">SecondGear</div>
-
-        <!-- Navbar Links for Large Screens -->
-        <div class="hidden sm:flex space-x-4">
-          <router-link to="/" class="px-4 py-2 hover:bg-orange-600 rounded">Home</router-link>
-          <router-link to="/admin" class="px-4 py-2 hover:bg-orange-600 rounded">Admin</router-link>
-          <router-link to="/auth" class="px-4 py-2 hover:bg-orange-600 rounded">Login/Register</router-link>
+    <nav class="bg-orange-700 text-zinc-100 sticky top-0 z-50 shadow-lg">
+      <div class="px-4 sm:px-8 lg:px-8 py-4 flex justify-between items-center">
+        <div class="sm:text-3xl text-xl font-bold">SecondGear</div>
+        <div class="hidden md:flex space-x-6">
+          <router-link to="/" class="px-4 py-2 hover:bg-orange-600 rounded-md transition">Home</router-link>
+          <router-link to="/admin" class="px-4 py-2 hover:bg-orange-600 rounded-md transition">Admin</router-link>
+          <router-link to="/auth" class="px-4 py-2 hover:bg-orange-600 rounded-md transition">Login/Register</router-link>
         </div>
-
-        <!-- Hamburger Menu for Medium and Small Screens -->
-        <div class="sm:hidden">
-          <button @click="toggleMenu" class="text-zinc-100">
-            <i class="fas fa-bars text-2xl"></i> <!-- Hamburger icon -->
-          </button>
+        <button @click="toggleMenu" class="md:hidden text-zinc-100 focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+      
+      <transition name="slide">
+        <div v-if="menuOpen" class="md:hidden bg-orange-700">
+          <router-link @click="closeMenu" to="/" class="block px-4 py-3 text-zinc-100 hover:bg-orange-600 transition">Home</router-link>
+          <router-link @click="closeMenu" to="/admin" class="block px-4 py-3 text-zinc-100 hover:bg-orange-600 transition">Admin</router-link>
+          <router-link @click="closeMenu" to="/auth" class="block px-4 py-3 text-zinc-100 hover:bg-orange-600 transition">Login/Register</router-link>
         </div>
-      </div>
-
-      <!-- Mobile Menu (Hidden by Default, Visible when `menuOpen` is true) -->
-      <div v-if="menuOpen" class="sm:hidden flex flex-col items-left bg-orange-700 py-4">
-        <router-link to="/" class="px-4 py-2 text-zinc-200 hover:bg-orange-600 w-full text-center">Home</router-link>
-        <router-link to="/admin" class="px-4 py-2 text-zinc-200 hover:bg-orange-600 w-full text-center">Admin</router-link>
-        <router-link to="/auth" class="px-4 py-2 text-zinc-200 hover:bg-orange-600 w-full text-center">Login/Register</router-link>
-      </div>
+      </transition>
     </nav>
 
-    <!-- Main Content -->
     <router-view />
   </div>
 </template>
@@ -42,9 +34,24 @@ const menuOpen = ref(false);
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value;
 };
+
+const closeMenu = () => {
+  menuOpen.value = false;
+};
 </script>
 
 <style scoped>
-/* Optional - Adds a smooth transition for the mobile menu */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+.slide-enter-active, .slide-leave-active {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+.slide-enter-from, .slide-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+.slide-enter-to, .slide-leave-from {
+  max-height: 500px;
+  opacity: 1;
+}
 </style>

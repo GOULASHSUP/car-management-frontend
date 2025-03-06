@@ -1,6 +1,5 @@
 <template>
   <div class="flex h-screen">
-    <!-- Right side with login and register forms -->
     <div class="w-full bg-zinc-200 flex-grow text-zinc-200 flex flex-col items-center justify-center p-8">
       
       <!-- Login Form -->
@@ -22,7 +21,7 @@
         />
         
         <button 
-          class="w-full py-3 mb-4 bg-orange-700 text-white rounded-lg hover:bg-orange-500"
+          class="w-full py-3 mb-4 bg-orange-600 text-white rounded-lg hover:bg-orange-500"
           @click="fetchToken(email, password)"
         >
           Login
@@ -40,7 +39,7 @@
         </p>
       </div>
 
-      <!-- Register Form (appears when toggled) -->
+      <!-- Register Form -->
       <div v-if="menuOpen" class="max-w-md w-full bg-zinc-300 p-8 rounded-md shadow-lg mt-6">
         <h3 class="text-3xl font-bold text-left text-zinc-500 mb-6">Register</h3>
         
@@ -64,7 +63,7 @@
             v-model="password"
           />
           <button 
-            class="w-full py-3 mb-4 bg-orange-700 text-white rounded-lg hover:bg-orange-500"
+            class="w-full py-3 mb-4 bg-orange-600 text-white rounded-lg hover:bg-orange-500"
             @click.prevent="registerUser(name, email, password)"
           >
             Register
@@ -95,7 +94,6 @@ const toggleRegisterDialog = () => {
 </script>
 
 <style scoped>
-/* Style for dialog and smooth transition for the mobile menu */
 dialog {
   background-color: var(--vt-c-black, #181818);
   border-left: 1px solid var(--vt-c-gray-500, #9CA3AF);
