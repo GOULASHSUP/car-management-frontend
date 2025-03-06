@@ -12,7 +12,7 @@ export type Car = {
     isHidden: boolean;
     _createdBy: string;
   };
-  export type newProduct = Omit<Car, "_id"> & {
+  export type newCar = Omit<Car, "_id"> & {
     _createdBy?: string;
   };
   

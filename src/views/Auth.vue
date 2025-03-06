@@ -27,13 +27,6 @@
         >
           Login
         </button>
-
-        <button 
-          class="w-full py-3 mb-4 bg-zinc-700 text-white rounded-lg hover:bg-zinc-500"
-          @click="logout"
-        >
-          Logout
-        </button>
       </div>
 
       <!-- Click to Register Text -->
@@ -93,7 +86,7 @@
 import { ref } from 'vue'
 import { useUsers } from '../modules/auth/useUsers'
 
-const { fetchToken, registerUser, logout, name, email, password, user } = useUsers()
+const { fetchToken, registerUser, name, email, password, user } = useUsers()
 const menuOpen = ref(false)
 
 const toggleRegisterDialog = () => {
