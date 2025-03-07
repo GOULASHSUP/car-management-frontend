@@ -23,8 +23,8 @@
 
           <p class="text-gray-600 text-sm mt-3">Engine: {{ car.engine }} | Year: {{ car.year }}</p>
           <p class="text-gray-600 text-sm mt-1">In Stock: {{ car.stock }}</p>
+          <p class="text-orange-600 sm:text-md text-sm font-bold mt-3">Discount: {{ car.discountPct }}%</p>
           <p v-if="car.isHidden" class="text-zinc-100 sm:text-lg text-sm mt-6 bg-red-600 rounded-md p-4 text-center">Sold Out!</p>
-          <p v-if="car.discount" class="text-red-500 text-sm mt-1">Discount: {{ car.discount }}%</p>
         </div>
       </div>
     </div>

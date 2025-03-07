@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="600.00006"
+   height="533.33337"
+   viewBox="0 0 18.000002 16.000001"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="car-svgrepo-com.svg"
+   inkscape:export-filename="car.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.31020611"
+     inkscape:cx="122.4992"
+     inkscape:cy="723.71237"
+     inkscape:window-width="1728"
+     inkscape:window-height="998"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1">
+    <inkscape:page
+       x="0"
+       y="-9.9875847e-16"
+       width="18.000002"
+       height="16"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <path
+     d="M 17.000001,13 V 7.3245997 c 0,-0.215 -0.0347,-0.4286 -0.1026,-0.6325 L 15.455801,2.36754 C 15.183601,1.55086 14.419301,1 13.558501,1 H 8.8258179 4.4415201 c -0.86086,0 -1.62514,0.55086 -1.89737,1.36754 l -1.44152,4.3245597 c -0.06797,0.2039 -0.10263,0.4175 -0.10263,0.6325 V 13 M 17.000001,13 H 1.0000001 m 16.0000009,0 v 1.5 c 0,0.2761 -0.2239,0.5 -0.5,0.5 -0.2761,0 -0.5,-0.2239 -0.5,-0.5 V 13 M 1.0000001,13 v 1.5 c 0,0.2761 0.22386,0.5 0.5,0.5 0.27614,0 0.5,-0.2239 0.5,-0.5 V 13 M 1.3333301,6 H 16.666701 M 5.0000001,8.9999997 v 1 m 8.0000009,-1 v 1"
+     stroke="#000000"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     id="path1"
+     style="fill:none;fill-opacity:1;stroke:#cc7928;stroke-opacity:1"
+     sodipodi:nodetypes="csccscsccsccccsssccsssccccccc" />
+</svg>
