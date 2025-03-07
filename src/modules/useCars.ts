@@ -10,7 +10,7 @@ export const useCars = () => {
     loading.value = true;
     try {
       const response = await fetch(
-        "http://localhost:4000/api/cars"
+        "https://ments-api.onrender.com/api/cars"
       );
       if (!response.ok) {
         throw new Error("No data available");
@@ -66,7 +66,7 @@ export const useCars = () => {
       const CarWithDefaults = setDefaultValues(Car, userId);
 
       const response = await fetch(
-        "http://localhost:4000/api/cars",
+        "https://ments-api.onrender.com/api/cars",
         {
           method: "POST",
           headers: {
@@ -93,7 +93,7 @@ export const useCars = () => {
     try {
       const { token } = getTokenAndUserId();
       
-      const response = await fetch(`http://localhost:4000/api/cars/${id}`, {
+      const response = await fetch(`https://ments-api.onrender.com/api/cars/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +124,7 @@ export const useCars = () => {
     token: string
   ): Promise<void> => {
     const response = await fetch(
-      `http://localhost:4000/api/cars/${id}`,
+      `https://ments-api.onrender.com/api/cars/${id}`,
       {
         method: "DELETE",
         headers: {

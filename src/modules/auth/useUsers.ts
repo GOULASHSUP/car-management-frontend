@@ -14,7 +14,7 @@ export const useUsers = () => {
   const fetchToken = async (email: string, password: string): Promise<void> => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/user/login",
+        "https://ments-api.onrender.com/api/user/login",
         {
           method: "POST",
           headers: {
@@ -52,7 +52,7 @@ export const useUsers = () => {
   ): Promise<void> => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/user/register",
+        "https://ments-api.onrender.com/api/user/register",
         {
           method: "POST",
           headers: {
