@@ -13,37 +13,43 @@
           <div>
             <label class="block text-zinc-700 font-semibold">Brand</label>
             <input v-model="newCar.brand" type="text" placeholder="Enter brand" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              minlength="1" maxlength="20"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div>
             <label class="block text-zinc-700 font-semibold">Model</label>
             <input v-model="newCar.model" type="text" placeholder="Enter model" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              minlength="1" maxlength="20"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div>
             <label class="block text-zinc-700 font-semibold">Year</label>
             <input v-model.number="newCar.year" type="number" placeholder="Enter year" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              :max="new Date().getFullYear()" min="1886"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div>
             <label class="block text-zinc-700 font-semibold">Engine</label>
             <input v-model="newCar.engine" type="text" placeholder="Enter engine type" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              minlength="1" maxlength="20"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div>
             <label class="block text-zinc-700 font-semibold">Price (DKK)</label>
             <input v-model.number="newCar.price" type="number" placeholder="Enter price" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              min="1" max="10000000"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div>
             <label class="block text-zinc-700 font-semibold">Stock</label>
             <input v-model.number="newCar.stock" type="number" placeholder="Enter stock amount" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
+              min="1" max="10000"
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" required />
           </div>
 
           <div class="col-span-2 flex items-center space-x-3">
@@ -54,13 +60,13 @@
           <div v-if="newCar.discount" class="col-span-2">
             <label class="block text-zinc-700 font-semibold">Discount %</label>
             <input v-model.number="newCar.discountPct" type="number" placeholder="Enter discount percentage" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
           </div>
 
           <div class="col-span-2">
             <label class="block text-zinc-700 font-semibold">Image URL</label>
             <input v-model="newCar.imageURL" type="text" placeholder="Enter image URL" 
-                   class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
+              class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
           </div>
 
           <div class="col-span-2 flex items-center space-x-3">
@@ -97,13 +103,13 @@
             <div v-if="car.discount" class="col-span-2">
               <label class="block text-zinc-700 font-semibold">Discount %</label>
               <input v-model.number="car.discountPct" type="number" placeholder="Enter discount percentage" 
-                     class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
+                class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
             </div>
 
             <div class="col-span-2">
               <label class="block text-zinc-700 font-semibold">Image URL</label>
               <input v-model="car.imageURL" type="text" placeholder="Image URL" 
-                     class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
+                class="w-full p-3 border rounded bg-zinc-100 text-zinc-700 focus:ring-orange-500 focus:outline-none" />
             </div>
 
             <div class="col-span-2 flex items-center space-x-3">
