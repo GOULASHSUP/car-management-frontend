@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen bg-zinc-100 px-4 sm:px-6 lg:px-12 py-10 sm:py-12 flex flex-col items-center">
-        <div v-if="loading" class="text-center text-orange-600">Loading...</div>
+        <LoadingMessage v-if="loading" />
         <div v-else-if="error" class="text-center text-red-600">{{ error }}</div>
         <div v-else-if="car" class="bg-zinc-200 p-6 sm:p-8 rounded-2xl shadow-xl border max-w-full sm:max-w-2xl lg:max-w-3xl w-full">
             <div class="relative overflow-hidden rounded-xl aspect-video mb-6">
@@ -39,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import LoadingMessage from '../components/LoadingMessage.vue';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import type { Car } from '../interfaces/interfaces';

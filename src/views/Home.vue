@@ -2,7 +2,7 @@
   <div class="bg-zinc-100 min-h-screen px-4 sm:px-8 md:px-16 lg:px-32 xl:px-64 py-10 md:py-16">
     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-left text-orange-600 mb-6">Available Cars</h2>
 
-    <div v-if="loading" class="text-center text-orange-500 text-lg">Loading...</div>
+    <LoadingMessage v-if="loading" />
     <div v-else-if="error" class="text-center text-red-500 text-lg">{{ error }}</div>
 
     <div v-else>
@@ -78,6 +78,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed } from 'vue'
 import { useCars } from '../modules/useCars'
+import LoadingMessage from '../components/LoadingMessage.vue';
 
 const { loading, error, cars, fetchCars } = useCars();
 

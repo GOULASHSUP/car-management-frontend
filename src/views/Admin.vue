@@ -1,9 +1,12 @@
 <template>
   <div class="bg-zinc-100 min-h-screen py-10">
-    <div v-if="loading" class="text-center text-orange-500 text-lg">Loading...</div>
+    <LoadingMessage v-if="loading" />
     <div v-else-if="error" class="text-center text-lg text-red-600 font-semibold">{{ error }}</div>
 
-    <div class="sm:px-64 px-6">
+    <div class="sm:px-64 px-6" v-if="!loading">
+      <div v-if="showToast" class="fixed top-24 right-6 z-50 bg-green-500 text-white py-2 px-4 rounded shadow-md text-sm sm:text-base transition duration-300">
+        {{ toastMessage }}
+      </div>
       
       <!-- Add a new car section -->
       <div class="bg-white p-8 rounded-lg shadow-md">
@@ -128,10 +131,16 @@
           </div>
 
           <div class="mt-6 space-x-4">
-            <button @click="deleteCar(car._id)" class="bg-red-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-500">
+            <button
+              @click="() => { try { deleteCar(car._id); triggerToast('Car deleted.') } catch { triggerToast('Error: Not authorized to delete') } }"
+              class="bg-red-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-500"
+            >
               Delete
             </button>
-            <button @click="updateCar(car._id, car)" class="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-500">
+            <button
+              @click="() => { try { updateCar(car._id, car); triggerToast('Car updated.') } catch { triggerToast('Error: Not authorized to update') } }"
+              class="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-500"
+            >
               Save Changes
             </button>
           </div>
@@ -145,6 +154,7 @@
 <script setup lang="ts">
 import { useCars } from "../modules/useCars";
 import { onMounted, ref } from "vue";
+import LoadingMessage from "../components/LoadingMessage.vue";
 //import type { Car } from "../interfaces/interfaces";
 
 const {
@@ -157,6 +167,17 @@ const {
   deleteCar,
   getTokenAndUserId,
 } = useCars();
+
+const toastMessage = ref("");
+const showToast = ref(false);
+
+function triggerToast(message: string) {
+  toastMessage.value = message;
+  showToast.value = true;
+  setTimeout(() => {
+    showToast.value = false;
+  }, 5000);
+}
 
 onMounted(() => {
   fetchCars();
@@ -177,12 +198,15 @@ const newCar = ref({
 });
 
 const addCarHandler = async () => {
-  const { userId } = getTokenAndUserId();
-  newCar.value._createdBy = userId;
-  await addCar(newCar.value);
-  newCar.value = {
-    ...newCar.value,
-  };
+  try {
+    const { userId } = getTokenAndUserId();
+    newCar.value._createdBy = userId;
+    await addCar(newCar.value);
+    triggerToast("Car successfully added!");
+    newCar.value = { ...newCar.value };
+  } catch (err: any) {
+    triggerToast("Error: Unauthorized or failed to add car.");
+  }
 };
 
 </script>
