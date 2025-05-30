@@ -9,7 +9,7 @@ export type Car = {
     stock: number;
     discount: boolean;
     discountPct: number;
-    isHidden: boolean;
+    soldout: boolean;
     _createdBy: string;
   };
   export type newCar = Omit<Car, "_id"> & {

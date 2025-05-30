@@ -64,7 +64,7 @@
           </div>
 
           <div class="col-span-2 flex items-center space-x-3">
-            <input v-model="newCar.isHidden" type="checkbox" class="w-5 h-5 text-orange-500 focus:ring-orange-400 border-gray-300 rounded-md" />
+            <input v-model="newCar.soldout" type="checkbox" class="w-5 h-5 text-orange-500 focus:ring-orange-400 border-gray-300 rounded-md" />
             <label class="text-zinc-700 font-semibold">Sold Out</label>
           </div>
 
@@ -108,7 +108,7 @@
 
             <div class="col-span-2 flex items-center space-x-3">
               <input
-                v-model="car.isHidden"
+                v-model="car.soldout"
                 type="checkbox"
                 class="w-5 h-5 border-gray-300 rounded-md"
               />
@@ -165,7 +165,7 @@ const newCar = ref({
   stock: 0,
   discount: false,
   discountPct: 0,
-  isHidden: false,
+  soldout: false,
   imageURL: "",
   _createdBy: "",
 });

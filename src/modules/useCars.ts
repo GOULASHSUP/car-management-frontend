@@ -54,7 +54,7 @@ export const useCars = () => {
       stock: Car.stock || 45,
       discount: Car.discount || false,
       discountPct: Car.discountPct || 0,
-      isHidden: Car.isHidden || false,
+      soldout: Car.soldout || false,
       _createdBy: userId,
     };
   };
@@ -165,3 +165,19 @@ export const useCars = () => {
     getTokenAndUserId,
   };
 };
+
+export async function getCarById(id: string): Promise<Car> {
+  try {
+    const response = await fetch(`https://ments-api.onrender.com/api/cars/${id}`);
+    if (!response.ok) {
+      throw new Error("Car not found");
+    }
+    const result = await response.json();
+    if (Array.isArray(result) && result.length > 0) {
+      return result[0];
+    }
+    throw new Error("Car not found");
+  } catch (error) {
+    throw error;
+  }
+}
