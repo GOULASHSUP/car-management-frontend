@@ -17,7 +17,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("lsToken");
 
   if (to.meta.requiresAuth && !token) {
     next("/auth");

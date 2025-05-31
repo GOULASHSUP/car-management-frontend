@@ -1,5 +1,11 @@
 <template>
   <div class="bg-zinc-100 min-h-screen py-10">
+    <button
+      @click="handleLogout"
+      class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-500 mb-6 w-fit mx-6 sm:float-right sm:mr-10 lg:fixed lg:top-24 lg:right-10 lg:z-50"
+    >
+      Logout
+    </button>
     <LoadingMessage v-if="loading" />
     <div v-else-if="error" class="text-center text-lg text-red-600 font-semibold">{{ error }}</div>
 
@@ -155,7 +161,8 @@
 import { useCars } from "../modules/useCars";
 import { onMounted, ref } from "vue";
 import LoadingMessage from "../components/LoadingMessage.vue";
-//import type { Car } from "../interfaces/interfaces";
+import { useRouter } from 'vue-router';
+import { useUsers } from '../modules/auth/useUsers';
 
 const {
   cars,
@@ -167,6 +174,14 @@ const {
   deleteCar,
   getTokenAndUserId,
 } = useCars();
+
+const router = useRouter();
+const { logoutUser } = useUsers();
+
+const handleLogout = () => {
+  logoutUser();
+  router.push("/auth");
+};
 
 const toastMessage = ref("");
 const showToast = ref(false);
