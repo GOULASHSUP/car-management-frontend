@@ -1,4 +1,7 @@
 <template>
+  <div v-if="showToast" class="fixed top-20 right-4 z-50 bg-green-500 text-white py-2 px-4 rounded shadow-md text-sm sm:text-base transition duration-300">
+    {{ toastMessage }}
+  </div>
   <div class="flex h-screen">
     <div class="w-full bg-zinc-200 flex-grow text-zinc-200 flex flex-col items-center justify-center p-8">
       
@@ -64,7 +67,7 @@
           />
           <button 
             class="w-full py-3 mb-4 bg-orange-600 text-white rounded-lg hover:bg-orange-500"
-            @click.prevent="registerUser(name, email, password)"
+            @click.prevent="handleRegister"
           >
             Register
           </button>
@@ -90,6 +93,9 @@ const { fetchToken, registerUser, name, email, password } = useUsers()
 const menuOpen = ref(false)
 const router = useRouter();
 
+const showToast = ref(false);
+const toastMessage = ref("");
+
 const toggleRegisterDialog = () => {
   menuOpen.value = !menuOpen.value
 }
@@ -105,6 +111,20 @@ const handleLogin = async () => {
     console.error("Login failed", err);
   }
 }
+
+const handleRegister = async () => {
+  try {
+    await registerUser(name.value, email.value, password.value);
+    toastMessage.value = "Registered successfully, please log in.";
+    showToast.value = true;
+    menuOpen.value = false;
+    setTimeout(() => {
+      showToast.value = false;
+    }, 5000);
+  } catch (err) {
+    console.error("Registration failed", err);
+  }
+};
 </script>
 
 <style scoped>
