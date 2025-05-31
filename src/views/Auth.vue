@@ -22,7 +22,7 @@
         
         <button 
           class="w-full py-3 mb-4 bg-orange-600 text-white rounded-lg hover:bg-orange-500"
-          @click="fetchToken(email, password)"
+          @click="handleLogin"
         >
           Login
         </button>
@@ -84,12 +84,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUsers } from '../modules/auth/useUsers'
+import { useRouter } from 'vue-router';
 
 const { fetchToken, registerUser, name, email, password } = useUsers()
 const menuOpen = ref(false)
+const router = useRouter();
 
 const toggleRegisterDialog = () => {
   menuOpen.value = !menuOpen.value
+}
+
+const handleLogin = async () => {
+  try {
+    const tokenValue = await fetchToken(email.value, password.value);
+    if (tokenValue) {
+      window.localStorage.setItem("token", tokenValue);
+      router.push("/admin");
+    }
+  } catch (err) {
+    console.error("Login failed", err);
+  }
 }
 </script>
 

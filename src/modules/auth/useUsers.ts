@@ -11,7 +11,7 @@ export const useUsers = () => {
   const email = ref<string>("");
   const password = ref<string>("");
 
-  const fetchToken = async (email: string, password: string): Promise<void> => {
+  const fetchToken = async (email: string, password: string): Promise<string> => {
     try {
       const response = await fetch(
         "https://ments-api.onrender.com/api/user/login",
@@ -39,9 +39,11 @@ export const useUsers = () => {
       localStorage.setItem("userIdToken", authResponse.data.userId);
       console.log("User's logged in successfully", authResponse);
       console.log("Token:", token.value);
+      return authResponse.data.token;
     } catch (err) {
       error.value = (err as Error).message || "An error occurred";
       isLoggedIn.value = false;
+      return "";
     }
   };
 
